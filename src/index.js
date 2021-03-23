@@ -51,7 +51,16 @@ function drawCanvas() {
   context.scale(ratio, ratio);
 }
 
-function drawSnake(positions) {
+function drawSnake(positions, { clearTail = false } = {}) {
+  if (clearTail) {
+    const tail = positions.pop();
+
+    context.beginPath();
+    context.fillStyle = backgroundColor;
+    context.fillRect(tail.x, tail.y, boxSize, boxSize);
+    context.closePath();
+  }
+
   for (let i = 0; i < positions.length; i++) {
     const position = positions[i];
 
@@ -63,12 +72,8 @@ function drawSnake(positions) {
   }
 }
 
-function game() {
-  moveSnake();
-}
-
 function startGame() {
-  interval = setInterval(game, gameSpeed);
+  interval = setInterval(moveSnake, gameSpeed);
 }
 
 function createBoard() {
@@ -78,11 +83,11 @@ function createBoard() {
   drawSnake(positions);
 }
 
-function moveSnake(newDirection = direction) {
+function moveSnake() {
   const [{ x, y }] = positions;
   let position = {};
 
-  switch (newDirection) {
+  switch (direction) {
     case KEY_UP: {
       position = { x, y: y - boxSize };
       break;
@@ -101,15 +106,8 @@ function moveSnake(newDirection = direction) {
     }
   }
 
-  const tail = positions.pop();
-  context.beginPath();
-  context.fillStyle = backgroundColor;
-  context.fillRect(tail.x, tail.y, boxSize, boxSize);
   positions.unshift(position);
-  context.closePath();
-
-  direction = newDirection;
-  drawSnake(positions);
+  drawSnake(positions, { clearTail: true });
 }
 
 function handleKeyboard(evt) {
@@ -121,7 +119,7 @@ function handleKeyboard(evt) {
 
   direction = newDirection;
   stopGame();
-  moveSnake(newDirection);
+  moveSnake();
   startGame();
 }
 
