@@ -1,0 +1,25 @@
+{
+  "name": "snakewar",
+  "version": "1.0.0",
+  "description": "another snake game",
+  "main": "index.js",
+  "author": "Marcelo Fuentes <marceloe.fuentes@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "lint": "eslint '**/*.{js,jsx}' --quiet --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@rollup/plugin-babel": "^5.3.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
+    "rollup": "^2.42.2",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}

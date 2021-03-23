@@ -1,0 +1,27 @@
+---
+env:
+  es6: true
+  browser: true
+  commonjs: true
+  node: true
+  jest: true
+extends:
+  - eslint:recommended
+  - plugin:prettier/recommended
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2018
+  sourceType: module
+plugins:
+  - prettier
+rules:
+  prettier/prettier:
+    - error
+    - singleQuote: true
+  import/no-named-as-default: 0
+  no-console: 2
+  import/prefer-default-export: 0
+  no-unused-vars:
+    - 1
+    - argsIgnorePattern: "^_"

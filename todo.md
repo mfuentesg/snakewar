@@ -1,0 +1,5 @@
+- [x] Move Snake
+- [ ] Allow snake to pass thru walls (at least for now NOT)
+- [ ] Collision logic
+- [x] Handle Keyboard
+- [ ] Use arrows and WASD
