@@ -4,7 +4,7 @@ const KEY_LEFT = 'left';
 const KEY_RIGHT = 'right';
 
 const canvas = document.getElementById('game');
-const context = canvas.getContext('2d');
+const context = canvas.getContext('2d', { alpha: false });
 const ratio = window.devicePixelRatio;
 
 const gameSpeed = 70;
@@ -17,13 +17,13 @@ const keymap = {
   40: KEY_DOWN,
   37: KEY_LEFT,
   39: KEY_RIGHT,
-  32: 'fire',
+  32: 'fire'
 };
 const opposites = {
   [KEY_UP]: KEY_DOWN,
   [KEY_DOWN]: KEY_UP,
   [KEY_RIGHT]: KEY_LEFT,
-  [KEY_LEFT]: KEY_RIGHT,
+  [KEY_LEFT]: KEY_RIGHT
 };
 
 let direction = KEY_RIGHT;
@@ -115,7 +115,7 @@ function moveSnake(newDirection = direction) {
 function handleKeyboard(evt) {
   const newDirection = keymap[evt.keyCode];
 
-  if (newDirection === direction || opposites[direction] === newDirection) {
+  if (!newDirection || newDirection === direction || opposites[direction] === newDirection) {
     return;
   }
 
